@@ -1,0 +1,45 @@
+--Project #1with SPotify data, downloaded from Kaggle:
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+--LEt's see what we have in the Spotifydata table
+SELECT * 
+FROM Spotifydata;
+
+--Who are the most popular artists?
+SELECT artist_name, popularity
+FROM Spotifydata
+ORDER BY popularity desc;
+
+--What songs are a hit from Olivia Rodrigo?
+SELECT artist_name, track_name
+FROM Spotifydata
+WHERE artist_name= "Olivia Rodrigo";
+
+--Average danceability and energy from the list
+SELECT artist_name 
+,AVG (energy)
+,AVG (danceability)
+FROM Spotifydata
+GROUP BY artist_name;
+
